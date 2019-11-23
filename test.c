@@ -114,3 +114,7 @@ int main() {
 
 
 }
+
+int function() {
+    return 0;
+}
