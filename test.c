@@ -111,7 +111,10 @@ int main() {
     for (int i = 0; i < text.n + 1; i++) {
         printf("%s", pointer->arr[i]);
     }
-    int k = 0;
 
 
+}
+
+int function() {
+    return 0;
 }
