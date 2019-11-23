@@ -27,6 +27,7 @@ int main() {
             text.arr = realloc(text.arr, sizeof(char *) * text.size);
         }
         if (strchr(sentence, '\n')) {
+            free(sentence);
             break;
         }
         text.arr[text.n] = sentence;
@@ -41,6 +42,10 @@ int main() {
     for (int i = 0; i < text.n + 1; i++) {
         printf("%s", pointer->arr[i]);
     }
+    for (int i = 0; i < text.n + 1; i++){
+        free(text.arr[i]);
+    }
+    free(arr);
 
 
 }
