@@ -3,4 +3,4 @@ project(Test C)
 
 set(CMAKE_C_STANDARD 99)
 
-add_executable(Test test.c cmake-build-debug/CMakeFiles/test2.c)
+add_executable(Test test.c test.c)
