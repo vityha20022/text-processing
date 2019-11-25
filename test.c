@@ -5,6 +5,7 @@
 #include "converter.h"
 #include "structText.h"
 #include "delete.h"
+#include "delete_odd_letter.h"
 
 
 
@@ -36,6 +37,7 @@ int main() {
     text.n--;
 
     pointer = delete(pointer);
+    pointer = delete_odd_letter(pointer);
 
 
     for (int i = 0; i < text.n + 1; i++) {
