@@ -2,7 +2,6 @@
 #include "structText.h"
 #include <string.h>
 #include <stdlib.h>
-#include <stdio.h>
 #include <ctype.h>
 
 struct Text* delete_odd_letter(struct Text* text){

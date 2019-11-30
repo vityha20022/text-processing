@@ -6,6 +6,7 @@
 #include "structText.h"
 #include "delete.h"
 #include "delete_odd_letter.h"
+#include "alpha_counter.h"
 
 
 
@@ -36,12 +37,13 @@ int main() {
     }
     text.n--;
 
-    pointer = delete(pointer);
-    pointer = delete_odd_letter(pointer);
+    //pointer = delete(pointer);
+    //alpha_counter(pointer);
+    //pointer = delete_odd_letter(pointer);
 
 
-    for (int i = 0; i < text.n + 1; i++) {
-        printf("%s", pointer->arr[i]);
+     for (int i = 0; i < text.n + 1; i++) {
+        printf("%s\n", pointer->arr[i]);
     }
 
 

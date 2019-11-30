@@ -2,24 +2,23 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "readSentence.h"
 
 char* readSentence(){
     int size = 20;
     int n = 0;
-    char symbol = getchar();
-    char* sentence = malloc(size * sizeof(char));
-    sentence[n] = symbol;
+    char* sent = malloc(size * sizeof(char));
+    char symbol;
+    symbol = getchar();
+    sent[n] = symbol;
     n++;
     while(!strchr(".\n", symbol)) {
         symbol = getchar();
-        if (n == size) {
+        if (n == size - 1) {
             size += 20;
-            sentence = realloc(sentence, size * sizeof(char));
+            sent = realloc(sent, size * sizeof(char));
         }
-        sentence[n] = symbol;
+        sent[n] = symbol;
         n++;
     }
-    sentence[n] = '\0';
-    return sentence;
+    sent[n] = '\0';
 }
