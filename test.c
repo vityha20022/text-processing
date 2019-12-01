@@ -23,12 +23,13 @@ int main() {
     text.arr = arr;
     while (1) {
         char *sentence = readSentence();
-        if (text.number == text.size - 1) {
+        if (text.number == text.size) {
             text.size += 20;
             // добавить проверку реалока
             text.arr = realloc(text.arr, sizeof(char *) * text.size);
         }
         if (strchr(sentence, '\n')) {
+            free(sentence);
             break;
         }
         text.arr[text.number] = sentence;
@@ -45,6 +46,10 @@ int main() {
      for (int i = 0; i < text.number + 1; i++) {
         printf("%s", pointer->arr[i]);
     }
+    for (int i = 0; i < text.number + 1; i++){
+        free(text.arr[i]);
+    }
+    free(text.arr);
 
 
 
