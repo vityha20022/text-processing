@@ -19,7 +19,7 @@ int main() {
     text.size = 20;
     text.number = 0;
     char **arr;
-    arr = malloc(text.size * sizeof(char *));
+    arr = calloc(text.size, sizeof(char *));
     text.arr = arr;
     while (1) {
         char *sentence = readSentence();
@@ -39,8 +39,8 @@ int main() {
     text.number--;
 
     pointer = delete(pointer);
-    pointer = delete_odd_letter(pointer);
-    alpha_counter(pointer);
+    delete_odd_letter(pointer);
+    pointer = alpha_counter(pointer);
 
 
      for (int i = 0; i < text.number + 1; i++) {

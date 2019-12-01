@@ -5,7 +5,7 @@
 
 char* readSentence(){
     int size = 20;
-    char* sentence = malloc(size * sizeof(char));
+    char* sentence = calloc(size, sizeof(char));
     int n = 0;
     char symbol = getchar();
     sentence[n] = symbol;
