@@ -5,20 +5,20 @@
 
 char* readSentence(){
     int size = 20;
+    char* sentence = malloc(size * sizeof(char));
     int n = 0;
-    char* sent = malloc(size * sizeof(char));
-    char symbol;
-    symbol = getchar();
-    sent[n] = symbol;
+    char symbol = getchar();
+    sentence[n] = symbol;
     n++;
     while(!strchr(".\n", symbol)) {
         symbol = getchar();
         if (n == size - 1) {
             size += 20;
-            sent = realloc(sent, size * sizeof(char));
+            sentence = realloc(sentence, size * sizeof(char));
         }
-        sent[n] = symbol;
+        sentence[n] = symbol;
         n++;
     }
-    sent[n] = '\0';
+    sentence[n] = '\0';
+    return sentence;
 }

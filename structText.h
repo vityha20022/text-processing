@@ -1,5 +1,5 @@
 struct Text{
     char** arr;
-    int n;
+    int number;
     int size;
 };

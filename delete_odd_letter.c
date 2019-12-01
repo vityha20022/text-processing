@@ -7,9 +7,9 @@
 struct Text* delete_odd_letter(struct Text* text){
     char sep[2] = " ,";
     int j = 0;
-    while(j < text -> n + 1) {
+    while(j < text -> number + 1) {
         int len_sent = strlen(text->arr[j]);
-        char *buf = malloc(len_sent * sizeof(char));
+        char *buf = malloc(len_sent * sizeof(char) + 1);
         strcpy(buf, text->arr[j]);
         char *istr;
         istr = strtok(buf, sep);
@@ -37,10 +37,10 @@ struct Text* delete_odd_letter(struct Text* text){
                 }
             }
             free(text->arr[j]);
-            for (int i = j; i < text-> n; i++) {
+            for (int i = j; i < text-> number; i++) {
                 text->arr[i] = text->arr[i + 1];
             }
-            text->n--;
+            text->number--;
             free(buf);
         }
         else {

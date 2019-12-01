@@ -4,7 +4,7 @@
 #include <ctype.h>
 char* converter(const char* str){
     char* buf;
-    buf = malloc(strlen(str));
+    buf = malloc(strlen(str) + 1);
     int len;
     buf = strcpy(buf, str);
     len = strlen(buf);

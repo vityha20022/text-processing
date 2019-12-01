@@ -17,13 +17,13 @@ int main() {
     struct Text* pointer;
     pointer = &text;
     text.size = 20;
-    text.n = 0;
+    text.number = 0;
     char **arr;
     arr = malloc(text.size * sizeof(char *));
     text.arr = arr;
     while (1) {
         char *sentence = readSentence();
-        if (text.n == text.size - 1) {
+        if (text.number == text.size - 1) {
             text.size += 20;
             // добавить проверку реалока
             text.arr = realloc(text.arr, sizeof(char *) * text.size);
@@ -31,19 +31,19 @@ int main() {
         if (strchr(sentence, '\n')) {
             break;
         }
-        text.arr[text.n] = sentence;
-        text.n++;
+        text.arr[text.number] = sentence;
+        text.number++;
 
     }
-    text.n--;
+    text.number--;
 
-    //pointer = delete(pointer);
-    //alpha_counter(pointer);
-    //pointer = delete_odd_letter(pointer);
+    pointer = delete(pointer);
+    pointer = delete_odd_letter(pointer);
+    alpha_counter(pointer);
 
 
-     for (int i = 0; i < text.n + 1; i++) {
-        printf("%s\n", pointer->arr[i]);
+     for (int i = 0; i < text.number + 1; i++) {
+        printf("%s", pointer->arr[i]);
     }
 
 
