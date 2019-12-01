@@ -30,7 +30,13 @@ struct Text* delete_odd_letter(struct Text* text){
 
 
         }
-        if (odd == 0) {
+        if (odd == 0 && text -> number == 0){
+            free(text -> arr[j]);
+            text ->number--;
+            free(buf);
+            break;
+        }
+        if (odd == 0 && text -> number != 0) {
             if (text -> arr[j][0] != ' '){
                 for (int i = 0; i < strlen(text -> arr[j + 1]); i++){
                     text -> arr[j + 1][i] = text -> arr[j + 1][i + 1];
