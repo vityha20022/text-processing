@@ -12,6 +12,7 @@ struct Text* alpha_counter(struct Text* text){
     while(j < text -> number + 1) {
         int len_sent = strlen(text->arr[j]);
         char *buf = malloc(len_sent * sizeof(char) + 1);
+        char* new_arr = calloc(len_sent,sizeof(char) + 1);
         strcpy(buf, text->arr[j]);
         char *istr;
         istr = strtok(buf, sep);
@@ -26,18 +27,29 @@ struct Text* alpha_counter(struct Text* text){
             }
             char* counter = calloc(17,sizeof(char));
             sprintf(counter, "%d", count);
-            int all_len = strlen(istr) + strlen(counter);
+            int all_len = strlen(istr) + strlen(counter) + 1;
             char* new_str = malloc(all_len);
             if (count > 0){
                 strcpy(new_str, counter);
             }
             strcat(new_str, istr);
-            printf("%s ", new_str);
+            strcat(new_str, " ");
+            if (strlen(new_arr) + strlen(new_str) >= len_sent){
+                len_sent+= len_sent;
+                new_arr = realloc(new_arr, len_sent);
+            }
+            strcat(new_arr, new_str);
+            free(new_str);
+            free(counter);
+
 
             istr = strtok(NULL, sep);
 
 
         }
+        free(buf);
+        free(text -> arr[j]);
+        text -> arr[j] = new_arr;
         j++;
     }
     return text;
