@@ -27,7 +27,7 @@ struct Text* alpha_counter(struct Text* text){
             }
             char* counter = calloc(17,sizeof(char));
             sprintf(counter, "%d", count);
-            int all_len = strlen(istr) + strlen(counter) + 1;
+            int all_len = strlen(istr) + strlen(counter) + 2;
             char* new_str = calloc(all_len, sizeof(char));
             if (count > 0){
                 strcpy(new_str, counter);

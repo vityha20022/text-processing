@@ -39,7 +39,7 @@ int main() {
     text.number--;
 
     pointer = delete(pointer);
-    delete_odd_letter(pointer);
+    pointer = delete_odd_letter(pointer);
     pointer = alpha_counter(pointer);
 
 
