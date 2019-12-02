@@ -7,7 +7,7 @@
 #include "delete.h"
 #include "delete_odd_letter.h"
 #include "alpha_counter.h"
-
+#include "structSentence.h"
 
 
 int compare(const void* a, const void* b);
@@ -41,11 +41,30 @@ int main() {
     pointer = delete(pointer);
     //pointer = delete_odd_letter(pointer);
     //pointer = alpha_counter(pointer);
-    qsort(text.arr, text.number + 1, sizeof(char*), compare);
+
+    struct Sentence sentence[text.number + 1];
+    for (int i = 0; i < text.number + 1; i++){
+        int len_memmory = strlen(text.arr[i]) + 2;
+        sentence[i].sent = calloc(len_memmory, sizeof(char));
+        strcpy(sentence[i].sent, text.arr[i]);
+        if(sentence[i].sent[0] != ' '){
+            int len = strlen(sentence[i].sent);
+            for(int k = len; k >= 0; k--){
+                sentence[i].sent[k + 1] = sentence[i].sent[k];
+            }
+            sentence[i].sent[0] = ' ';
+        }
+    }
 
 
     for (int i = 0; i < text.number + 1; i++) {
-        printf("%s", pointer->arr[i]);
+        printf("%d\n", sentence[i].len_last_word);
+    }
+    qsort(sentence, text.number + 1, sizeof(struct Sentence), compare);
+
+
+    for (int i = 0; i < text.number + 1; i++) {
+        printf("%s\n", sentence[i].sent);
     }
     for (int i = 0; i < text.number + 1; i++){
         free(text.arr[i]);
@@ -57,9 +76,8 @@ int main() {
 }
 
 int compare(const void* a, const void* b){
-    char** aa = (char**)a;
-    char** bb = (char**)b;
-    return strlen(*bb) - strlen(*aa);
+
+    return ((struct Sentence*)a) -> len_last_word - ((struct Sentence*)b) -> len_last_word;
 
 }
 
