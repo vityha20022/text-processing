@@ -42,7 +42,7 @@ int main() {
     //pointer = delete_odd_letter(pointer);
     //pointer = alpha_counter(pointer);
 
-    struct Sentence sentence[text.number + 1];
+    struct Sentence* sentence = malloc((text.number + 1) * sizeof(struct Sentence));
     for (int i = 0; i < text.number + 1; i++){
         int len_memmory = strlen(text.arr[i]) + 2;
         sentence[i].sent = calloc(len_memmory, sizeof(char));
