@@ -10,7 +10,7 @@
 
 
 
-
+int compare(const void* a, const void* b);
 
 int main() {
     struct Text text;
@@ -39,11 +39,12 @@ int main() {
     text.number--;
 
     pointer = delete(pointer);
-    pointer = delete_odd_letter(pointer);
-    pointer = alpha_counter(pointer);
+    //pointer = delete_odd_letter(pointer);
+    //pointer = alpha_counter(pointer);
+    qsort(text.arr, text.number + 1, sizeof(char*), compare);
 
 
-     for (int i = 0; i < text.number + 1; i++) {
+    for (int i = 0; i < text.number + 1; i++) {
         printf("%s", pointer->arr[i]);
     }
     for (int i = 0; i < text.number + 1; i++){
@@ -55,4 +56,10 @@ int main() {
 
 }
 
+int compare(const void* a, const void* b){
+    char** aa = (char**)a;
+    char** bb = (char**)b;
+    return strlen(*bb) - strlen(*aa);
+
+}
 
