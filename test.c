@@ -42,7 +42,7 @@ int main() {
     //pointer = delete_odd_letter(pointer);
     //pointer = alpha_counter(pointer);
 
-    struct Sentence* sentence = malloc(text.number + 1 * sizeof(struct Sentence));
+    struct Sentence sentence[text.number + 1];
     for (int i = 0; i < text.number + 1; i++){
         int len_memmory = strlen(text.arr[i]) + 2;
         sentence[i].sent = calloc(len_memmory, sizeof(char));
@@ -66,27 +66,19 @@ int main() {
         }
         sentence[i].len_last_word = strlen(buf);
     }
-    for (int i = 0; i < text.number + 1; i++){
-        free(text.arr[i]);
-    }
+
 
 
     qsort(sentence, text.number + 1, sizeof(struct Sentence), compare);
 
-    for(int i = 0; i < strlen(sentence[0].sent); i++){
-        sentence[0].sent[i] = sentence[0].sent[i + 1];
-    }
 
-    for (int i = 0; i < text.number + 1; i++){
-        pointer -> arr[i] = &sentence->sent[i];
-    }
 
     for (int i = 0; i < text.number + 1; i++) {
-        printf("%s", text.arr[i]);
+        printf("%s\n", sentence[i].sent);
     }
 
     for (int i = 0; i < text.number + 1; i++){
-        free(sentence[i].sent);
+        free(text.arr[i]);
     }
     free(text.arr);
 
