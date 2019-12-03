@@ -67,20 +67,27 @@ int main() {
         sentence[i].len_last_word = strlen(buf);
     }
 
+    for (int i = 0; i < text.number + 1; i++){
+        free(text.arr[i]);
+    }
+
 
 
     qsort(sentence, text.number + 1, sizeof(struct Sentence), compare);
 
-
+    for(int i = 0; i < text.number + 1; i++){
+        text.arr[i] = sentence[i].sent;
+    }
 
     for (int i = 0; i < text.number + 1; i++) {
-        printf("%s\n", sentence[i].sent);
+        printf("%s", text.arr[i]);
     }
 
     for (int i = 0; i < text.number + 1; i++){
         free(text.arr[i]);
     }
     free(text.arr);
+    free(sentence);
 
 
 
