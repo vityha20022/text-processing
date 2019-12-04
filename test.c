@@ -11,7 +11,7 @@
 #include "len_last_word_sort.h"
 
 
-int compare(const void* a, const void* b);
+
 
 int main() {
     struct Text text;
