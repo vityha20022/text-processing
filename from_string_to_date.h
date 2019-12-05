@@ -1,1 +1,2 @@
-//time_t from_string_to_date(char *str);
+#include <time.h>
+time_t from_string_to_date(char *str);

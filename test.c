@@ -11,8 +11,7 @@
 #include "structSentence.h"
 #include "len_last_word_sort.h"
 #include "from_string_to_date.h"
-
-
+#include "out_put_date.h"
 
 
 int main() {
@@ -42,11 +41,7 @@ int main() {
     text.number--;
 
     pointer = delete(pointer);
-    pointer = len_last_word_sort(pointer);
-    //pointer = delete_odd_letter(pointer);
-    pointer = alpha_counter(pointer);
-    pointer = delete_odd_letter(pointer);
-    pointer = len_last_word_sort(pointer);
+    out_put_date(pointer);
 
 
 
@@ -54,7 +49,7 @@ int main() {
     for (int i = 0; i < text.number + 1; i++) {
         printf("%s\n", text.arr[i]);
     }
-   
+
 
     for (int i = 0; i < text.number + 1; i++){
         free(text.arr[i]);
