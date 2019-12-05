@@ -9,7 +9,7 @@ struct Text* delete_odd_letter(struct Text* text){
     int j = 0;
     while(j < text -> number + 1) {
         int len_sent = strlen(text->arr[j]);
-        char *buf = calloc(len_sent, sizeof(char) + 1);
+        char *buf = calloc(len_sent + 1, sizeof(char));
         strcpy(buf, text->arr[j]);
         char *istr;
         istr = strtok(buf, sep);

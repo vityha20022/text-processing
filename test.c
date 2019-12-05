@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <time.h>
 #include "readSentence.h"
 #include "converter.h"
 #include "structText.h"
@@ -9,6 +10,7 @@
 #include "alpha_counter.h"
 #include "structSentence.h"
 #include "len_last_word_sort.h"
+#include "from_string_to_date.h"
 
 
 
@@ -17,7 +19,7 @@ int main() {
     struct Text text;
     struct Text* pointer;
     pointer = &text;
-    text.size = 20;
+    text.size = 50;
     text.number = 0;
     char **arr;
     arr = calloc(text.size, sizeof(char *));
@@ -25,7 +27,7 @@ int main() {
     while (1) {
         char *sentence = readSentence();
         if (text.number == text.size) {
-            text.size += 20;
+            text.size += 50;
             // добавить проверку реалока
             text.arr = realloc(text.arr, sizeof(char *) * text.size);
         }
@@ -40,15 +42,19 @@ int main() {
     text.number--;
 
     pointer = delete(pointer);
+    pointer = len_last_word_sort(pointer);
     //pointer = delete_odd_letter(pointer);
-    //pointer = alpha_counter(pointer);
+    pointer = alpha_counter(pointer);
+    pointer = delete_odd_letter(pointer);
     pointer = len_last_word_sort(pointer);
 
 
 
+
     for (int i = 0; i < text.number + 1; i++) {
-        printf("%s", text.arr[i]);
+        printf("%s\n", text.arr[i]);
     }
+   
 
     for (int i = 0; i < text.number + 1; i++){
         free(text.arr[i]);

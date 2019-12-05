@@ -11,7 +11,7 @@ struct Text* alpha_counter(struct Text* text){
     int j = 0;
     while(j < text -> number + 1) {
         int len_sent = strlen(text->arr[j]);
-        char *buf = calloc(len_sent, sizeof(char) + 1);
+        char* buf = calloc(len_sent, sizeof(char) + 1);
         char* new_arr = calloc(len_sent,sizeof(char) + 1);
         strcpy(buf, text->arr[j]);
         char *istr;
@@ -29,21 +29,43 @@ struct Text* alpha_counter(struct Text* text){
             sprintf(counter, "%d", count);
             int all_len = strlen(istr) + strlen(counter) + 2;
             char* new_str = calloc(all_len, sizeof(char));
-            if (count > 0){
-                strcpy(new_str, counter);
-            }
-            strcat(new_str, istr);
-            strcat(new_str, " ");
-            if (strlen(new_arr) + strlen(new_str) >= len_sent){
-                len_sent+= len_sent;
-                new_arr = realloc(new_arr, len_sent);
-            }
-            strcat(new_arr, new_str);
-            free(new_str);
-            free(counter);
+            if(buf[0] == ' ') {
+                strcat(new_str, " ");
+
+                if (count > 0) {
+                    strcat(new_str, counter);
+                }
+                strcat(new_str, istr);
+                if (strlen(new_arr) + strlen(new_str) >= len_sent) {
+                    len_sent += len_sent;
+                    new_arr = realloc(new_arr, len_sent);
+                }
+                strcat(new_arr, new_str);
+                free(new_str);
+                free(counter);
 
 
-            istr = strtok(NULL, sep);
+                istr = strtok(NULL, sep);
+            }
+            else{
+                if (count > 0){
+                    strcpy(new_str, counter);
+                }
+                strcat(new_str, istr);
+                if(istr[strlen(istr) - 1] != '.'){
+                    strcat(new_str, " ");
+                }
+                if (strlen(new_arr) + strlen(new_str) >= len_sent){
+                    len_sent+= len_sent;
+                    new_arr = realloc(new_arr, len_sent);
+                }
+                strcat(new_arr, new_str);
+                free(new_str);
+                free(counter);
+
+
+                istr = strtok(NULL, sep);
+            }
 
 
         }
