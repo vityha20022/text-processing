@@ -44,19 +44,24 @@ void out_put_date(struct Text* text){
                     strcat(red, none);
                     if(no_space == 0){
                         printf("%s", red);
+                        istr2 = strtok(NULL, " ");
+                        continue;
                     }
                     printf(" %s", red);
                     istr2 = strtok(NULL, " ");
                     continue;
-
                 }
+
                 if(no_space == 0){
                     printf("%s", istr2);
+                    no_space = 1;
+                    istr2 = strtok(NULL, " ");
+                    continue;
                 }
                 printf(" %s", istr2);
                 istr2 = strtok(NULL, " ");
                 // далее убирать пробел в начале не нужно, поэтому присваиваем переменной no_space значение отличное от 0
-                no_space = 1;
+
 
             }
             free(buf);

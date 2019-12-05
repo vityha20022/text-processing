@@ -45,9 +45,9 @@ int main() {
 
 
 
-    for (int i = 0; i < text.number + 1; i++) {
-        printf("%s\n", text.arr[i]);
-    }
+    //for (int i = 0; i < text.number + 1; i++) {
+        //printf("%s\n", text.arr[i]);
+    //}
 
 
     for (int i = 0; i < text.number + 1; i++){
