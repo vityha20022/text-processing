@@ -22,6 +22,7 @@ int main() {
     char **arr;
     arr = calloc(text.size, sizeof(char *));
     text.arr = arr;
+    char ch;
     while (1) {
         char *sentence = readSentence();
         if (text.number == text.size) {
@@ -40,20 +41,60 @@ int main() {
     text.number--;
 
     pointer = delete(pointer);
-    out_put_date(pointer);
+    printf("Выберите одно из доступных действий:\n");
+    printf(" 1. Вывести все предложения в которых есть даты в формате “DD/MM/YYYY”, даты которые еще не наступили будут выделины красным цветом.\n");
+    printf(" 2. Удалить все предложения в которых каждое слово содержит нечетное количество букв.\n");
+    printf(" 3. Преобразовать предложения так, чтобы перед каждым словом стояло количество букв в нем.\n");
+    printf(" 4. Отсортировать предложения по возрастанию длины последнего слова.\n");
+    printf(" 5. Выйти\n\n");
+    printf ("    Enter your choice: ");
+    while(1) {
+        ch = getchar();
+        switch (ch) {
+            case '1':
+                out_put_date(pointer);
+                printf("\n\n ==================================================================================");
+                printf("\n\n     Enter your choice: ");
+                break;
+            case '2':
+                pointer = delete_odd_letter(pointer);
+                for (int i = 0; i < text.number + 1; i++) {
+                    printf("%s", text.arr[i]);
+                }
+                printf("\n\n ==================================================================================");
+                printf("\n\n     Enter your choice: ");
+                break;
+            case '3':
+                pointer = alpha_counter(pointer);
+                for (int i = 0; i < text.number + 1; i++) {
+                    printf("%s", text.arr[i]);
+                }
+                printf("\n\n ==================================================================================");
+                printf("\n\n     Enter your choice: ");
+                break;
+            case '4':
+                pointer = len_last_word_sort(pointer);
+                for (int i = 0; i < text.number + 1; i++) {
+                    printf("%s", text.arr[i]);
+                }
+                printf("\n\n ==================================================================================");
+                printf("\n\n     Enter your choice: ");
+                break;
+            case '5':
+                for (int i = 0; i < text.number + 1; i++) {
+                    free(text.arr[i]);
+                }
+                free(text.arr);
+                return 0;
 
 
 
 
-    //for (int i = 0; i < text.number + 1; i++) {
-        //printf("%s\n", text.arr[i]);
-    //}
-
-
-    for (int i = 0; i < text.number + 1; i++){
-        free(text.arr[i]);
+        }
     }
-    free(text.arr);
+
+
+
 
 
 

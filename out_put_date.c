@@ -25,7 +25,7 @@ void out_put_date(struct Text* text){
             if(from_string_to_date(istr) != -1){
                 count++;
             }
-            istr = strtok(NULL, buf);
+            istr = strtok(NULL, " ");
 
         }
         free(buf);
