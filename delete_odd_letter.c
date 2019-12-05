@@ -15,6 +15,7 @@ struct Text* delete_odd_letter(struct Text* text){
         istr = strtok(buf, sep);
         int len_word;
         int odd = 0;
+        // если переменная odd осталась равна 0, значит предложение следует удалить
         while (istr != NULL) {
             len_word = strlen(istr);
             int count = 0;
@@ -30,6 +31,7 @@ struct Text* delete_odd_letter(struct Text* text){
 
 
         }
+        // отдельный случай для единственного прдложения, дабы при сдвиге предложений не произошел сегфолт
         if (odd == 0 && text -> number == 0){
             free(text -> arr[j]);
             text ->number--;
@@ -37,15 +39,19 @@ struct Text* delete_odd_letter(struct Text* text){
             break;
         }
         if (odd == 0 && text -> number != 0) {
+            //убираем незначащий пробел в случае, если удаляется предложение начинающееся не с пробела
             if (text -> arr[j][0] != ' '){
                 for (int i = 0; i < strlen(text -> arr[j + 1]); i++){
                     text -> arr[j + 1][i] = text -> arr[j + 1][i + 1];
                 }
             }
+
             free(text->arr[j]);
+            // сдвигаем предложения
             for (int i = j; i < text-> number; i++) {
                 text->arr[i] = text->arr[i + 1];
             }
+
             text->number--;
             free(buf);
         }

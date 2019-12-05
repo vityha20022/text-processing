@@ -6,8 +6,10 @@
 
 struct Text* delete(struct Text* text){
     int i = 0;
+    // создадим переменные под строки, возвращаемые функцией converter, чтобы не потерять адреса
     char* first;
     char* last;
+    // последоватлеьно сравниваем каждое предложение со всеми другими и удаляем дубликаты
     while (i < text -> number){
         first = converter(text -> arr[i]);
         int j = i + 1;

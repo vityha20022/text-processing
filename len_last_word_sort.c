@@ -23,6 +23,7 @@ struct Text* len_last_word_sort(struct Text* text){
     // заполняем поле len_last_word в каждом из предложений
     for(int i = 0; i < text -> number + 1; i++){
         char* istr;
+        // в переменной buf будет храниться последнее слово
         char* buf;
         istr = strtok(text -> arr[i], " ");
         while (istr != NULL){
@@ -49,6 +50,7 @@ struct Text* len_last_word_sort(struct Text* text){
     for(int i = 0; i < text -> number + 1; i++){
         text -> arr[i] = sentence[i].sent;
     }
+
     free(sentence);
     return text;
 };
