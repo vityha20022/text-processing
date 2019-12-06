@@ -38,7 +38,7 @@ int main() {
         text.number++;
 
     }
-    text.number--;
+
 
     pointer = delete(pointer);
     printf("Выберите одно из доступных действий:\n");
@@ -58,7 +58,7 @@ int main() {
                 break;
             case 2:
                 pointer = delete_odd_letter(pointer);
-                for (int i = 0; i < text.number + 1; i++) {
+                for (int i = 0; i < text.number; i++) {
                     printf("%s", text.arr[i]);
                 }
                 printf("\n\n ==================================================================================");
@@ -66,7 +66,7 @@ int main() {
                 break;
             case 3:
                 pointer = alpha_counter(pointer);
-                for (int i = 0; i < text.number + 1; i++) {
+                for (int i = 0; i < text.number; i++) {
                     printf("%s", text.arr[i]);
                 }
                 printf("\n\n ==================================================================================");
@@ -74,14 +74,14 @@ int main() {
                 break;
             case 4:
                 pointer = len_last_word_sort(pointer);
-                for (int i = 0; i < text.number + 1; i++) {
+                for (int i = 0; i < text.number; i++) {
                     printf("%s", text.arr[i]);
                 }
                 printf("\n\n ==================================================================================");
                 printf("\n\n     Enter your choice: ");
                 break;
             case 5:
-                for (int i = 0; i < text.number + 1; i++) {
+                for (int i = 0; i < text.number; i++) {
                     free(text.arr[i]);
                 }
                 free(text.arr);

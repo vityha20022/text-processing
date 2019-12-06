@@ -7,7 +7,7 @@
 struct Text* delete_odd_letter(struct Text* text){
     char sep[2] = " ,";
     int j = 0;
-    while(j < text -> number + 1) {
+    while(j < text -> number) {
         int len_sent = strlen(text->arr[j]);
         char *buf = calloc(len_sent + 1, sizeof(char));
         strcpy(buf, text->arr[j]);
@@ -48,7 +48,7 @@ struct Text* delete_odd_letter(struct Text* text){
 
             free(text->arr[j]);
             // сдвигаем предложения
-            for (int i = j; i < text-> number; i++) {
+            for (int i = j; i < text-> number - 1; i++) {
                 text->arr[i] = text->arr[i + 1];
             }
 

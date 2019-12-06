@@ -6,8 +6,8 @@
 int compare(const void* a, const void* b);
 struct Text* len_last_word_sort(struct Text* text){
     // заполняем массив структур с полем len_last_word и приовдим все предложения к одному виду
-    struct Sentence* sentence = malloc((text -> number + 1) * sizeof(struct Sentence));
-    for (int i = 0; i < text -> number + 1; i++){
+    struct Sentence* sentence = malloc((text -> number) * sizeof(struct Sentence));
+    for (int i = 0; i < text -> number; i++){
         int len_memmory = strlen(text -> arr[i]) + 2;
         sentence[i].sent = calloc(len_memmory, sizeof(char));
         strcpy(sentence[i].sent, text -> arr[i]);
@@ -21,7 +21,7 @@ struct Text* len_last_word_sort(struct Text* text){
     }
 
     // заполняем поле len_last_word в каждом из предложений
-    for(int i = 0; i < text -> number + 1; i++){
+    for(int i = 0; i < text -> number; i++){
         char* istr;
         // в переменной buf будет храниться последнее слово
         char* buf;
@@ -34,12 +34,12 @@ struct Text* len_last_word_sort(struct Text* text){
     }
 
     // очищаем старый массив для дальнейшей перезаписи в него отсортированного нового массива
-    for (int i = 0; i < text -> number + 1; i++){
+    for (int i = 0; i < text -> number; i++){
         free(text -> arr[i]);
     }
 
     // производим сортировку
-    qsort(sentence, text -> number + 1, sizeof(struct Sentence), compare);
+    qsort(sentence, text -> number, sizeof(struct Sentence), compare);
 
 
     // убираем незначащий пробел добавленный ранее из первого предложения
@@ -47,7 +47,7 @@ struct Text* len_last_word_sort(struct Text* text){
         sentence[0].sent[i] = sentence[0].sent[i + 1];
     }
     // перезаписываем в исходный массив отсортированный массив
-    for(int i = 0; i < text -> number + 1; i++){
+    for(int i = 0; i < text -> number; i++){
         text -> arr[i] = sentence[i].sent;
     }
 

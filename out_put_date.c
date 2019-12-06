@@ -10,7 +10,7 @@ void out_put_date(struct Text* text){
     // переменная позволяющая не печатать первый незначащий пробел
     int no_space = 0;
 
-    for(int i = 0; i < text -> number + 1; i++){
+    for(int i = 0; i < text -> number; i++){
         time_t now_time;
         now_time = time(NULL);
         int len_sent = strlen(text->arr[i]);

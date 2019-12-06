@@ -10,14 +10,14 @@ struct Text* delete(struct Text* text){
     char* first;
     char* last;
     // последоватлеьно сравниваем каждое предложение со всеми другими и удаляем дубликаты
-    while (i < text -> number){
+    while (i < text -> number - 1){
         first = converter(text -> arr[i]);
         int j = i + 1;
-        while(j < text -> number + 1){
+        while(j < text -> number){
             last = converter(text -> arr[j]);
             if(!strcmp(first, last)){
                 free(text -> arr[j]);
-                for (int k = j; k < text -> number; k++){
+                for (int k = j; k < text -> number - 1; k++){
                     text -> arr[k] = text -> arr[k + 1];
                 }
                 text -> number--;

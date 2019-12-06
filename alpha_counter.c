@@ -9,7 +9,7 @@
 struct Text* alpha_counter(struct Text* text){
     char* sep =  " ";
     int j = 0;
-    while(j < text -> number + 1) {
+    while(j < text -> number) {
         int len_sent = strlen(text->arr[j]);
         char* buf = calloc(len_sent, sizeof(char) + 1);
         char* new_arr = calloc(len_sent,sizeof(char) + 1);
