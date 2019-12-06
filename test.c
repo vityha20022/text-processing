@@ -22,7 +22,7 @@ int main() {
     char **arr;
     arr = calloc(text.size, sizeof(char *));
     text.arr = arr;
-    char ch;
+    int input;
     while (1) {
         char *sentence = readSentence();
         if (text.number == text.size) {
@@ -48,15 +48,15 @@ int main() {
     printf(" 4. Отсортировать предложения по возрастанию длины последнего слова.\n");
     printf(" 5. Выйти\n\n");
     printf ("    Enter your choice: ");
+    scanf("%d", &input);
     while(1) {
-        ch = getchar();
-        switch (ch) {
-            case '1':
+        switch (input) {
+            case 1:
                 out_put_date(pointer);
                 printf("\n\n ==================================================================================");
                 printf("\n\n     Enter your choice: ");
                 break;
-            case '2':
+            case 2:
                 pointer = delete_odd_letter(pointer);
                 for (int i = 0; i < text.number + 1; i++) {
                     printf("%s", text.arr[i]);
@@ -64,7 +64,7 @@ int main() {
                 printf("\n\n ==================================================================================");
                 printf("\n\n     Enter your choice: ");
                 break;
-            case '3':
+            case 3:
                 pointer = alpha_counter(pointer);
                 for (int i = 0; i < text.number + 1; i++) {
                     printf("%s", text.arr[i]);
@@ -72,7 +72,7 @@ int main() {
                 printf("\n\n ==================================================================================");
                 printf("\n\n     Enter your choice: ");
                 break;
-            case '4':
+            case 4:
                 pointer = len_last_word_sort(pointer);
                 for (int i = 0; i < text.number + 1; i++) {
                     printf("%s", text.arr[i]);
@@ -80,23 +80,25 @@ int main() {
                 printf("\n\n ==================================================================================");
                 printf("\n\n     Enter your choice: ");
                 break;
-            case '5':
+            case 5:
                 for (int i = 0; i < text.number + 1; i++) {
                     free(text.arr[i]);
                 }
                 free(text.arr);
                 return 0;
+            default:
+                printf("Вы ввели неверное значение, попробуйте еще раз.");
+                printf("\n\n ==================================================================================");
+                printf("\n\n     Enter your choice: ");
+                break;
+
 
 
 
 
         }
+        scanf("%d", &input);
     }
-
-
-
-
-
 
 
 }
