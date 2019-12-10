@@ -4,8 +4,8 @@
 #include <ctype.h>
 char* converter(const char* str){
     char* buf;
-    buf = calloc(strlen(str) + 1, sizeof(char));
     int len;
+    buf = calloc(strlen(str) + 1, sizeof(char));
     buf = strcpy(buf, str);
     len = strlen(buf);
     if (buf[0] == ' '){

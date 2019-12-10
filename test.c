@@ -30,7 +30,7 @@ int main() {
             // добавить проверку реалока
             text.arr = realloc(text.arr, sizeof(char *) * text.size);
         }
-        if (strchr(sentence, '\n')) {
+        if (strchr(sentence, '\n')){
             free(sentence);
             break;
         }

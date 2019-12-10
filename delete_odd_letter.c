@@ -32,13 +32,13 @@ struct Text* delete_odd_letter(struct Text* text){
 
         }
         // отдельный случай для единственного прдложения, дабы при сдвиге предложений не произошел сегфолт
-        if (odd == 0 && text -> number == 0){
+        if (odd == 0 && text -> number == 1){
             free(text -> arr[j]);
             text ->number--;
             free(buf);
             break;
         }
-        if (odd == 0 && text -> number != 0) {
+        if (odd == 0 && text -> number != 1) {
             //убираем незначащий пробел в случае, если удаляется предложение начинающееся не с пробела
             if (text -> arr[j][0] != ' '){
                 for (int i = 0; i < strlen(text -> arr[j + 1]); i++){
