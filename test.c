@@ -11,6 +11,7 @@
 #include "len_last_word_sort.h"
 #include "from_string_to_date.h"
 #include "out_put_date.h"
+#include "printer.h"
 
 
 int main() {
@@ -48,8 +49,9 @@ int main() {
     printf(" 4. Отсортировать предложения по возрастанию длины последнего слова.\n");
     printf(" 5. Выйти\n\n");
     printf ("    Enter your choice: ");
-    scanf("%d", &input);
+    //scanf("%d", &input);
     while(1) {
+        scanf("%d", &input);
         switch (input) {
             case 1:
                 out_put_date(pointer);
@@ -58,25 +60,19 @@ int main() {
                 break;
             case 2:
                 pointer = delete_odd_letter(pointer);
-                for (int i = 0; i < text.number; i++) {
-                    printf("%s", text.arr[i]);
-                }
+                printer(pointer);
                 printf("\n\n ==================================================================================");
                 printf("\n\n     Enter your choice: ");
                 break;
             case 3:
                 pointer = alpha_counter(pointer);
-                for (int i = 0; i < text.number; i++) {
-                    printf("%s", text.arr[i]);
-                }
+                printer(pointer);
                 printf("\n\n ==================================================================================");
                 printf("\n\n     Enter your choice: ");
                 break;
             case 4:
                 pointer = len_last_word_sort(pointer);
-                for (int i = 0; i < text.number; i++) {
-                    printf("%s", text.arr[i]);
-                }
+                printer(pointer);
                 printf("\n\n ==================================================================================");
                 printf("\n\n     Enter your choice: ");
                 break;
@@ -97,7 +93,6 @@ int main() {
 
 
         }
-        scanf("%d", &input);
     }
 
 

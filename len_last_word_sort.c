@@ -6,7 +6,7 @@
 int compare(const void* a, const void* b);
 struct Text* len_last_word_sort(struct Text* text){
     // заполняем массив структур с полем len_last_word и приовдим все предложения к одному виду
-    struct Sentence* sentence = malloc((text -> number) * sizeof(struct Sentence));
+    struct Sentence* sentence = calloc(text -> number, sizeof(struct Sentence));
     for (int i = 0; i < text -> number; i++){
         int len_memmory = strlen(text -> arr[i]) + 2;
         sentence[i].sent = calloc(len_memmory, sizeof(char));
@@ -43,8 +43,10 @@ struct Text* len_last_word_sort(struct Text* text){
 
 
     // убираем незначащий пробел добавленный ранее из первого предложения
-    for(int i = 0; i < strlen(sentence[0].sent); i++){
-        sentence[0].sent[i] = sentence[0].sent[i + 1];
+    if (text->number > 0) {
+        for (int i = 0; i < strlen(sentence[0].sent); i++) {
+            sentence[0].sent[i] = sentence[0].sent[i + 1];
+        }
     }
     // перезаписываем в исходный массив отсортированный массив
     for(int i = 0; i < text -> number; i++){

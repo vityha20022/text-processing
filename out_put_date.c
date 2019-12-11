@@ -6,6 +6,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+
 void out_put_date(struct Text* text){
     // переменная позволяющая не печатать первый незначащий пробел
     int no_space = 0;

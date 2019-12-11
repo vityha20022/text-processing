@@ -56,7 +56,7 @@ struct Text* alpha_counter(struct Text* text){
                     strcat(new_str, " ");
                 }
                 if (strlen(new_arr) + strlen(new_str) >= len_sent){
-                    len_sent+= len_sent;
+                    len_sent += len_sent;
                     new_arr = realloc(new_arr, len_sent);
                 }
                 strcat(new_arr, new_str);
