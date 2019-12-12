@@ -55,10 +55,10 @@ struct Text* len_last_word_sort(struct Text* text){
 
     free(sentence);
     return text;
-};
+}
 
 int compare(const void* a, const void* b){
 
     return ((struct Sentence*)a) -> len_last_word - ((struct Sentence*)b) -> len_last_word;
 
-};
+}

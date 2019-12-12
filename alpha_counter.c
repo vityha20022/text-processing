@@ -1,7 +1,7 @@
 #include "alpha_counter.h"
+#include "structText.h"
 #include <stdlib.h>
 #include <string.h>
-#include "structText.h"
 #include <ctype.h>
 #include <stdio.h>
 

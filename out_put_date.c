@@ -45,6 +45,7 @@ void out_put_date(struct Text* text){
                     strcat(red, none);
                     if(no_space == 0){
                         printf("%s", red);
+                        no_space = 1;
                         istr2 = strtok(NULL, " ");
                         continue;
                     }
